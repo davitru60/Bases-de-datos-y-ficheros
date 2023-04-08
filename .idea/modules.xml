@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Bases-Datos-Fechas/Bases-Datos-Fechas.iml" filepath="$PROJECT_DIR$/Bases-Datos-Fechas/Bases-Datos-Fechas.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Bases-de-datos-y-ficheros.iml" filepath="$PROJECT_DIR$/.idea/Bases-de-datos-y-ficheros.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Biblioteca/Biblioteca.iml" filepath="$PROJECT_DIR$/Biblioteca/Biblioteca.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Ficheros-1/Ficheros-1.iml" filepath="$PROJECT_DIR$/Ficheros-1/Ficheros-1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Ficheros-BBDD/Ficheros-BBDD.iml" filepath="$PROJECT_DIR$/Ficheros-BBDD/Ficheros-BBDD.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Ficheros-Binarios/Ficheros-Binarios.iml" filepath="$PROJECT_DIR$/Ficheros-Binarios/Ficheros-Binarios.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Serializable/Serializable.iml" filepath="$PROJECT_DIR$/Serializable/Serializable.iml" />
+    </modules>
+  </component>
+</project>
