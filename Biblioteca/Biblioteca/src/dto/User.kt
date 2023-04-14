@@ -13,6 +13,11 @@ open class User {
         this.userID=userID
     }
 
+    constructor(email:String?,password:String?){
+        this.email=email
+        this.password=password
+    }
+
     constructor(name:String?,surname:String?, email:String?, password:String?,userType:String?){
         this.name=name
         this.surname=surname
@@ -20,4 +25,6 @@ open class User {
         this.password=password
         this.userType=userType
     }
+
+
 }

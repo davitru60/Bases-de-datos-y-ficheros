@@ -14,11 +14,9 @@ class Book {
 
     }
 
-
-    constructor(title:String,author:String,publisher:String){
-        this.title=title
-        this.author=author
-        this.publisher=publisher
-
+    override fun toString(): String {
+        return "Book(bookID=$bookID, title='$title', author='$author', publisher='$publisher')"
     }
+
+
 }

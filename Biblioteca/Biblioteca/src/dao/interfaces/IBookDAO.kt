@@ -2,9 +2,8 @@ package dao.interfaces
 
 import dto.Book
 
-interface IBookDAO{
-    fun registerBook(book:Book):Boolean
-    fun searchBookByName(name:String):ArrayList<Book>
+interface IBookDAO :IGenericDAO<Book>{
+    fun searchBookByTitle(title:String):ArrayList<Book>
     fun searchBookByAuthor(author:String):ArrayList<Book>
 
 }

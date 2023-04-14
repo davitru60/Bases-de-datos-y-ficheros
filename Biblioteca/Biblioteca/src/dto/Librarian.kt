@@ -1,12 +1,11 @@
 package dto
 
-import java.sql.Date
+import java.time.LocalDate
 
 class Librarian : User {
-    var hireDate:String
+    var hireDate: LocalDate = LocalDate.now()
 
-    constructor(userID:Int,hireDate: String)
-            :super(userID){
+    constructor(userID:Int,hireDate: LocalDate) :super(userID){
         this.hireDate=hireDate
     }
 

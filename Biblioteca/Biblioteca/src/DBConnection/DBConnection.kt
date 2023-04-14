@@ -30,7 +30,7 @@ class DBConnection {
     }
 
     fun disconnect(){
-        connection?.close()?:throw SQLException("Algo fue mal cerrando la base de datos")
+        connection?.close()?:throw SQLException("Something went wrong closing the connection")
     }
 
     fun getPreparedStatement(sql:String):PreparedStatement?{
