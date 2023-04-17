@@ -1,0 +1,98 @@
+CREATE DATABASE Librería;
+USE Librería;
+
+CREATE TABLE Libros (
+  ID INT AUTO_INCREMENT PRIMARY KEY,
+  Título VARCHAR(255),
+  Autor INT,
+  Género VARCHAR(255),
+  Precio DECIMAL(10,2)
+);
+
+CREATE TABLE Autores (
+  ID INT AUTO_INCREMENT PRIMARY KEY,
+  Nombre VARCHAR(255),
+  Fecha_de_nacimiento DATE,
+  Nacionalidad VARCHAR(255)
+);
+
+INSERT INTO Autores (Nombre, Fecha_de_nacimiento, Nacionalidad) VALUES
+('Gabriel García Márquez', '1927-03-06', 'Colombiano'),
+('Isabel Allende', '1942-08-02', 'Chilena'),
+('Mario Vargas Llosa', '1936-03-28', 'Peruano'),
+('Julio Cortázar', '1914-08-26', 'Argentino'),
+('Carlos Fuentes', '1928-11-11', 'Mexicano');
+
+INSERT INTO Libros (Título, Autor, Género, Precio) VALUES
+('Cien años de soledad', 1, 'Realismo mágico', 12.99),
+('La casa de los espíritus', 2, 'Realismo mágico', 10.99),
+('La ciudad y los perros', 3, 'Novela', 9.99),
+('Rayuela', 4, 'Novela', 11.99),
+('La muerte de Artemio Cruz', 5, 'Novela', 8.99);
+Base de datos 2: Editorial
+
+CREATE DATABASE Editorial;
+USE Editorial;
+
+CREATE TABLE Editoriales (
+  ID INT AUTO_INCREMENT PRIMARY KEY,
+  Nombre VARCHAR(255),
+  Dirección VARCHAR(255),
+  Teléfono VARCHAR(255)
+);
+
+CREATE TABLE Publicaciones (
+  ID INT AUTO_INCREMENT PRIMARY KEY,
+  Título VARCHAR(255),
+  Fecha_de_publicación DATE,
+  Editorial INT,
+  FOREIGN KEY (Editorial) REFERENCES Editoriales(ID)
+);
+
+CREATE TABLE Contratos (
+  ID INT AUTO_INCREMENT PRIMARY KEY,
+  Autor INT,
+  Editorial INT,
+  Fecha_de_inicio DATE,
+  Fecha_de_finalización DATE,
+  FOREIGN KEY (Editorial) REFERENCES Editoriales(ID)
+);
+
+INSERT INTO Editoriales (Nombre, Dirección, Teléfono) VALUES
+('Editorial Planeta', 'Av. Diagonal, 662-664, Barcelona', '+34 932665555'),
+('Penguin Random House Grupo Editorial', 'Travessera de Gràcia, Barcelona', '+34 934927000'),
+('Grupo Santillana', 'Av. de los Artesanos, Tres Cantos, Madrid', '+34 913943800'),
+('Anagrama Editorial', 'Calle del Pedró de la Creu, Barcelona', '+34 932171711'),
+('Alianza Editorial', 'Calle Juan Ignacio Luca de Tena, Madrid', '+34 915414100');
+
+INSERT INTO Publicaciones (Título, Fecha_de_publicación, Editorial) VALUES
+('El otoño del patriarca', '1975-01-01', 1),
+('Eva Luna', '1987-01-01', 2),
+('La fiesta del chivo', '2000-01-01',3 ),
+('Final del juego', '1956-01-01',4 ),
+('Terra Nostra','1975-01-01' ,5 );
+
+INSERT INTO Contratos (Autor, Editorial, Fecha_de_inicio, Fecha_de_finalización) VALUES
+(1,1,'1973-01-01','1976-12-31'),
+(2,2,'1985-01-01','1990-12-31'),
+(3,3,'1998-01-01','2002-12-31'),
+(4,4,'1954-01-01','1958-12-31'),
+(5,5,'1973-01-01','1977-12-31');
+Base de datos 3: Ventas
+
+CREATE DATABASE Ventas;
+USE Ventas;
+
+CREATE TABLE Ventas (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    Libro INT,
+    Fecha_de_venta DATE,
+    Cantidad INT
+);
+
+CREATE TABLE Clientes (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    Nombre VARCHAR(255),
+    Dirección VARCHAR(255),
+    Teléfono VARCHAR(255)
+);

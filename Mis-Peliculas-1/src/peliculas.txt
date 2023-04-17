@@ -2,3 +2,5 @@
 3,Atenea,Romain Gavras,97.0,2022
 4,Luther,Jamie Payne,129.0,2023
 5,Secuestro en directo,Romuald Boulanger,104.0,2022
+6,Dios mio ¿pero que nos has hecho?,Philippe de Chauveron,98.0,2021
+7,Jumeaux mais pas trop,Olivier Ducray,98.0,2022

@@ -1,19 +1,10 @@
-import java.io.BufferedReader
-import java.io.File
-import java.io.FileReader
+import java.io.*
+import java.lang.NumberFormatException
 
 class OperacionesArchivo {
-    private fun crearFichero():File{
-        val fichero=File(".\\Mis-Peliculas-1\\src\\peliculas.txt")
-        if(!fichero.exists()){
-            fichero.createNewFile()
-        }
-        return fichero
-    }
 
-
-    private fun leerArchivo():ArrayList<Pelicula>{
-        val fichero= crearFichero()
+    private fun leerArchivo(rutaFichero:String):ArrayList<Pelicula>{
+        val fichero=File(rutaFichero)
         val peliculas=ArrayList<Pelicula>()
         var id:Int
         var titulo:String
@@ -35,15 +26,15 @@ class OperacionesArchivo {
         return peliculas
     }
 
-    fun mostrarTodasPeliculas(){
-        val peliculas=leerArchivo()
+    fun mostrarTodasPeliculas(rutaFichero: String){
+        val peliculas=leerArchivo(rutaFichero)
         for(pelicula in peliculas){
             println(pelicula)
         }
     }
 
-    fun aniadirPeliculaArchivo(){
-        val fichero=crearFichero()
+    fun aniadirPeliculaArchivo(rutaFichero: String){
+        val fichero=File(rutaFichero)
 
         println("Introduce el titulo")
         val titulo= readln()
@@ -57,20 +48,20 @@ class OperacionesArchivo {
         println("Introduce la fecha de lanzamiento")
         val fechaLanzamiento= readln()
 
-        val id=obtenerUltimoID()
+        val id=obtenerUltimoID(rutaFichero)
 
         val pelicula="$id,$titulo,$director,$duracion,$fechaLanzamiento\n"
         fichero.appendText(pelicula)
 
     }
 
-    fun eliminarPelicula(){
-        val fichero=crearFichero()
+    fun eliminarPelicula(rutaFichero: String){
+        val fichero=File(rutaFichero)
         val lineas=ArrayList<String>()
         val bufferedReader = BufferedReader(FileReader(fichero))
         var linea = bufferedReader.readLine()
 
-        mostrarTodasPeliculas()
+        mostrarTodasPeliculas(rutaFichero)
         println("¿Qué película deseas eliminar? (elije un id)")
         val id= readln().toInt()
 
@@ -93,8 +84,8 @@ class OperacionesArchivo {
         }
     }
 
-    private fun obtenerUltimoID():Int{
-        val fichero=crearFichero()
+    private fun obtenerUltimoID(rutaFichero: String):Int{
+        val fichero=File(rutaFichero)
         val lector = BufferedReader(FileReader(fichero))
         var linea = lector.readLine()
         var maxID:Int=0
@@ -110,6 +101,51 @@ class OperacionesArchivo {
         }
 
         return maxID
+    }
+
+    fun serializarArchivo(rutaFichero:String){
+        val peliculas=leerArchivo(ConstantesFicheros.RUTA_FICHERO_TEXTO)
+        var objectOutputStream: ObjectOutputStream? =null
+
+        try {
+            val fileOutputStream=FileOutputStream(rutaFichero)
+            objectOutputStream=ObjectOutputStream(fileOutputStream)
+
+            for (pelicula in peliculas){
+                objectOutputStream.writeObject(pelicula)
+            }
+
+        }catch (e:FileNotFoundException){
+            e.printStackTrace()
+        }catch (e:IOException) {
+            e.printStackTrace()
+        }catch (e:NumberFormatException){
+            e.printStackTrace()
+        }finally {
+            objectOutputStream?.close()
+        }
+
+    }
+
+    fun deserializarArchivo(rutaFichero:String){
+        val fileInputStream=FileInputStream(rutaFichero)
+        val objectInputStream= ObjectInputStream(fileInputStream)
+        try {
+            mostrarArchivoDeserializado(objectInputStream)
+
+        }catch (e:EOFException){
+            println("Fin de archivo")
+            println()
+        }finally {
+            objectInputStream.close()
+        }
+    }
+
+    private fun mostrarArchivoDeserializado(objectInputStream: ObjectInputStream) {
+        while (true) {
+            val peliculasDeserializadas = objectInputStream.readObject()
+            println(peliculasDeserializadas)
+        }
     }
 
 

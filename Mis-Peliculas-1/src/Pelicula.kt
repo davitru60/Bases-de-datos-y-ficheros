@@ -1,4 +1,6 @@
-class Pelicula {
+import java.io.Serializable
+
+class Pelicula:Serializable {
     var id:Int
     var titulo:String
     var director:String
