@@ -103,12 +103,12 @@ class OperacionesArchivo {
         return maxID
     }
 
-    fun serializarArchivo(rutaFichero:String){
+    fun serializarArchivo(rutaFicheroBinario:String){
         val peliculas=leerArchivo(ConstantesFicheros.RUTA_FICHERO_TEXTO)
         var objectOutputStream: ObjectOutputStream? =null
 
         try {
-            val fileOutputStream=FileOutputStream(rutaFichero)
+            val fileOutputStream=FileOutputStream(rutaFicheroBinario)
             objectOutputStream=ObjectOutputStream(fileOutputStream)
 
             for (pelicula in peliculas){
